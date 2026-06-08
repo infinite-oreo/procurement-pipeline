@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.huang</groupId>
-	<artifactId>procurement</artifactId>
+	<artifactId>procurekit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>

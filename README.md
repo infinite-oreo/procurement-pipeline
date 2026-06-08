@@ -1,19 +1,21 @@
-# Procurement Pipeline
+# ProcureKit
 
-A cloud-native procurement order management service with fully automated CI/CD deployment to AWS ECS Fargate.
+A cloud-native procurement order management system with fully automated CI/CD deployment to AWS ECS Fargate.
 
 ## Tech Stack
 
 - **Backend**: Java 21, Spring Boot
+- **Frontend**: React + TypeScript + Tailwind CSS (Vite)
 - **Containerization**: Docker (multi-stage build)
 - **Registry**: Amazon ECR
 - **Orchestration**: Amazon ECS Fargate
 - **CI/CD**: GitHub Actions
-- **IaC**: AWS CLI (IAM, ECS, ECR)
 
 ## Architecture
 
+```
 GitHub (push) → GitHub Actions → Docker Build → Amazon ECR → Amazon ECS Fargate
+```
 
 Every push to `main` automatically builds a new Docker image, pushes it to ECR, and deploys it to ECS.
 
@@ -21,40 +23,37 @@ Every push to `main` automatically builds a new Docker image, pushes it to ECR, 
 
 ### Prerequisites
 - Java 21
-- Maven
-- Docker
+- Node.js 18+
+- Docker + Docker Compose
 
-### Run locally
+### One-command startup (recommended)
 
 ```bash
-./mvnw spring-boot:run
+docker compose up
 ```
 
-### Run with Docker
+- Frontend: http://localhost:3000
+- Backend: http://localhost:8080
+
+### Run separately
 
 ```bash
-docker build -t procurement .
-docker run -p 8080:8080 procurement
+# Backend
+./mvnw spring-boot:run
+
+# Frontend
+cd frontend && npm install && npm run dev
 ```
 
 ## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/orders` | List all orders |
-| POST | `/orders` | Create a new order |
-
-### Example
-
-```bash
-# Create an order
-curl -X POST http://localhost:8080/orders \
-  -H "Content-Type: application/json" \
-  -d '{"itemName":"laptop","quantity":2}'
-
-# Get all orders
-curl http://localhost:8080/orders
-```
+| GET    | `/orders` | List all orders |
+| POST   | `/orders` | Create a new order |
+| PUT    | `/orders/{id}` | Edit an order |
+| PATCH  | `/orders/{id}/status` | Approve or reject an order |
+| DELETE | `/orders/{id}` | Delete an order |
 
 ## CI/CD Pipeline
 
