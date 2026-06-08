@@ -89,7 +89,7 @@ export default function App() {
       <header className="bg-card border-b border-border h-[60px] flex items-center justify-between px-8 sticky top-0 z-10 shadow-xs">
         <div className="flex items-center gap-2.5">
           <span className="text-xl">📦</span>
-          <span className="text-base font-semibold text-foreground tracking-tight">ProcureKit</span>
+          <span className="text-base font-semibold text-foreground tracking-tight">Procurement Pipeline</span>
         </div>
         <div className="flex items-center gap-2">
           <button

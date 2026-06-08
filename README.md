@@ -1,4 +1,4 @@
-# ProcureKit
+# Procurement Pipeline
 
 A cloud-native procurement order management system with fully automated CI/CD deployment to AWS ECS Fargate.
 
